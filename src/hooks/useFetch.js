@@ -1,32 +1,26 @@
 import {useEffect, useState} from "react";
 
-const useFetch = (endpoint, options) => {
+const useFetch = (url, options) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const apiUrl = process.env.API_URL;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        const response = await fetch(apiUrl + endpoint, options);
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
+        const response = await fetch(url, options);
         const data = await response.json();
         setData(data);
+        setIsLoading(false);
       } catch (e) {
         setError(e.message);
-        setLoading(false);
-      } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, [endpoint, options]);
+  }, [url, options]);
 
-  return {data, error, loading};
+  return {data, error, isLoading};
 }
 
 export default useFetch;
