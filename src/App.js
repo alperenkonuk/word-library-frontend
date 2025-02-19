@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   const toggleTheme = () => {
-    darkModeHandler(theme,setTheme)
+    darkModeHandler(theme,setTheme);
   }
 
   return (
