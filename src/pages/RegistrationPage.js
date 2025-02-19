@@ -34,16 +34,15 @@ function RegistrationPage() {
       })
     });
 
-    const data = await response.json();
+    const {accessToken, refreshToken, message} = await response.json();
 
-    if (data.message) {
-      setError(data.message);
+    if (message) {
+      setError(message);
       setIsLoading(false);
     }
 
-    console.log(data);
-    localStorage.setItem("authToken", data.token);
-    window.location.href = "/home";
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
 
   }
 
@@ -53,7 +52,7 @@ function RegistrationPage() {
       <div className="container mx-auto">
         <div className="max-w-md mx-auto my-10">
           <div className="text-center">
-            <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Register</h1>
+            <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Sign Up</h1>
             <p className="text-gray-500 dark:text-gray-400">Create a new account</p>
           </div>
           <div className="m-7">
@@ -81,7 +80,8 @@ function RegistrationPage() {
               <div className="mb-6">
                 <label htmlFor="password"
                        className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Confirm Password</label>
-                <input type="password" name="password" id="passwordConfirmation" value={values.passwordConfirmation}
+                <input type="password" name="passwordConfirmation" id="passwordConfirmation"
+                       value={values.passwordConfirmation}
                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                        onChange={handleChange}
                        placeholder="Password Again"/>
@@ -90,7 +90,7 @@ function RegistrationPage() {
               <div className="mb-6">
                 <button type="submit" disabled={isLoading}
                         className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">
-                  {isLoading ? "Logging in" : "Register"}
+                  {isLoading ? "Logging in" : "Sign Up"}
                 </button>
               </div>
               <p className="text-sm text-center text-gray-400">You already have an account?

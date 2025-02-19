@@ -1,10 +1,11 @@
 import './App.css';
-import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import {Route, Router, Routes} from "react-router";
 
 function App() {
+
   return (
-    <RegistrationPage />
+     <RegistrationPage/>
   );
 }
 
