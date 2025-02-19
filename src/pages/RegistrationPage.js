@@ -50,7 +50,6 @@ function RegistrationPage() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-white dark:bg-gray-900">
-      <Navbar/>
       <div className="container mx-auto my-auto">
         <div className="max-w-md mx-auto my-10">
           <div className="text-center">
