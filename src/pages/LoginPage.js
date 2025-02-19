@@ -1,6 +1,7 @@
 import "../hooks/useForm";
 import useForm from "../hooks/useForm";
-import {useState} from "react";
+import React, {useState} from "react";
+import Navbar from "../components/NavBar";
 
 const LoginPage = () => {
   const [values, handleChange] = useForm({email: "", password: ""});
@@ -36,8 +37,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center min-h-screen bg-white dark:bg-gray-900">
-      <div className="container mx-auto">
+    <div className="flex items-center flex-col min-h-screen bg-white dark:bg-gray-900">
+      <Navbar/>
+      <div className="container mx-auto my-auto">
         <div className="max-w-md mx-auto my-10">
           <div className="text-center">
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Sign in</h1>
@@ -49,12 +51,6 @@ const LoginPage = () => {
                 <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email
                   Address</label>
                 <input type="email" name="email" id="email" value={values.email} onChange={handleChange}
-                       className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
-              </div>
-              <div className="mb-6">
-                <label htmlFor="username"
-                       className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Username</label>
-                <input type="username" name="username" id="username" value={values.username} onChange={handleChange}
                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"/>
               </div>
               <div className="mb-6">

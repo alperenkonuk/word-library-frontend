@@ -1,5 +1,6 @@
 import useForm from "../hooks/useForm";
-import {useState} from "react";
+import React, {useState} from "react";
+import Navbar from "../components/NavBar";
 
 function RegistrationPage() {
   const [values, handleChange] = useForm({email: "", username: "", password: "", passwordConfirmation: ""});
@@ -48,8 +49,9 @@ function RegistrationPage() {
 
 
   return (
-    <div className="flex items-center min-h-screen bg-white dark:bg-gray-900">
-      <div className="container mx-auto">
+    <div className="flex flex-col items-center min-h-screen bg-white dark:bg-gray-900">
+      <Navbar/>
+      <div className="container mx-auto my-auto">
         <div className="max-w-md mx-auto my-10">
           <div className="text-center">
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Sign Up</h1>
